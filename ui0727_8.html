@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<body>
+    <h1>Elon</h1>
+    <!-- method를 사용해서 서버간 내용을 주고 받는다 GET은 정보(주소에 데이터 직접입력)가 노출되면서 전송 -->
+    <form method="GET" action="ui0727_9.html">
+        아이디:<input type="text" name="text"><br>
+        암호:<input type="password" name="password"><br>
+        <!--radio에서 name은 같은것으로 지정한다(배타적 특성을 갖는다)-->
+        취미:<input type="radio" name="hobby" value="등산">등산&nbsp;
+        <input type="radio" name="hobby" value="낚시">낚시&nbsp;
+        <input type="radio" name="hobby" value="농구">농구&nbsp;<br>
+        <!-- 서버쪽에 폼 내의 데이터를 전송할 때 / value - 것에 표현하는 내용 -->
+        <input type="submit" value="제출"><br>
+    </form>
+</body>
+</html>
