@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="computer.jpg" alt="computer사진" width="300">
+    <img src="nothing" alt="그림이 존재하지 않습니다." width="300"><br>
+
+    <audio src="Kalimba.mp3" controls ="controls"></audio><br>
+    <!-- 브라우저가 무엇이냐에 따라 결과가 달라질수 있기 때문에 밑에 문법을 이용해서 TYPE을 두개가 걸어놓은 것 사용한다. -->
+    <audio controls="controls">
+        <source src="Kalimba.mp3" type="audio/mp3">
+        <source src="Kalimba.ogg" type ="audio/ogg">
+    </audio><br>
+    <!-- poster은 동영상을 불러오는 동안 사용자에게 이미지를 보여준다 -->
+    <video controls="controls" poster="http://placehold.it/640x360"><!--외부 사이트에서 매체를 가져오는 것을 cdn이라고 한다-->
+        <source src="Wildlife.mp4" type="video/mp4">
+        <source src="Wildlife.webm" type="video/webm">
+    </video><br>
+</body>
+</html>
