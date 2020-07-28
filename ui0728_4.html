@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 아이디 선택자는 자손을 띄어쓰기로 구분한다. 하위 영역에 대해 전부를 지정한다 */
+        /* 콤마를 하여 다중지정을 할 경우 독립적임으로 전체를 다 작성해주어야 한다 */
+        #header h1, #header h2 {color: green;}
+        /* #nav h1{color: red;} */
+        #nav > h2 {color: red;} /*한단계 밑에만 적용*/
+        h2:hover {color : red;}
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h1>자손 영역</h1>
+        <div id="nav">
+            <h1>후손 영역(h1)</h1>
+            <h2>후손 영역2(h2)</h2>
+        </div>
+    </div>
+    <h2>후손에 포함되지 않음(h2)</h2>
+    <pre>,를 이용하여 다중 스타일 지정시 선택자 이름 전체 작성필요</pre>
+</body>
+</html>

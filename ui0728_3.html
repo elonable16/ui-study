@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .select {
+            color:red;
+            font-size: 20px;
+        }
+        /* 매우매우 중요 사용목적에 따라 클래스 명의 일관성을 가져가면서도 별도의 적용이 가능하다 */
+        li.fruit{
+            color: blue;
+        }
+        p.fruit{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <!-- 클래스의 이름만 쓰는 게 중요하다. -->
+        <li class="select">사과</li>
+        <li class="fruit">바나나</li>
+        <li class="select">오렌지</li>
+        <li class="fruit">감</li>
+    </ul>
+    <p class = "fruit">- 클래스 선택자 다루기</p>
+</body>
+</html>
