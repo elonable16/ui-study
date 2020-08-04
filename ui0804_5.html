@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function fn(num) {
+            var sum = 0;
+            for(var i=0; i<=num; i++){
+                sum += i;
+            }
+            return sum;
+        }
+    </script>
+</head>
+<body>
+    <script>
+        document.write(fn(10) + '<br>');
+        document.write(fn(100) + '<br>');
+        document.write(fn(1000) + '<br>');
+    </script>
+</body>
+</html>

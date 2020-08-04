@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function fn1() {
+            for (var i = 0; i < 5; i++) {
+                for (var j = 0; j < 5; j++) {
+                    document.write('*');
+                }
+                document.write('<br>');
+            }
+        }
+        function fn2() {
+            for (var i = 0; i < 5; i++) {
+                for (var j = 0; j <= i; j++) {
+                    document.write('*');
+                }
+                document.write('<br>');
+            }
+        }
+        function fn3() {
+            for (var i = 0; i < 5; i++) {
+                for (var j = 0; j <= 4 - i; j++) {
+                    document.write('*');
+                }
+                document.write('<br>');
+            }
+        }
+        function fn4() {
+            for (var i = 0; i <= 30; i++) {
+                for (var j = 0; j <= 100; j++) {
+                    if ((j % 10) == (i % 10)) {
+                        document.write(' ');
+                    } else {
+                        document.write('*');
+                    }
+                }
+                document.write('<br>');
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <script>
+        fn1();
+        fn2();
+        fn3();
+        fn4();
+    </script>
+</body>
+
+</html>
