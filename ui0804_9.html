@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {//현재 페이지가 최초로 실행 될 때
+            // document.querySelector('h1').style.backgroundColor = 'red';
+            // document.querySelector('h2').style.color = 'red';
+            var headers = document.querySelectorAll('h1'); // headers 는 배열 문서객체의 주소값을 받음
+            for (var i = 0; i < headers.length; i++) {
+                var header = headers[i];
+                header.style.color = 'orange';
+                header.style.background = 'red';
+                header.innerHTML = 'From JavaScript'
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <H1>process - 1</H1>
+    <H1>process - 2</H1>
+    <h1 id="header">header</h1>
+</body>
+
+</html>

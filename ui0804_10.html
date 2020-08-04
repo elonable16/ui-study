@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            // document.body.innerHTML ='<h1>자바스크립트</h1>';
+            // document.body.textContent ='<h1>자바스크립트</h1>';
+            var output = '';
+            for (var i = 0; i < 256; i++) {
+                output += '<div></div>';
+            }
+            document.body.innerHTML = output;//<div></div><div></div>...
+
+            var divs = document.querySelectorAll('div');
+            for (var i = 0; i < divs.length; i++) {
+                var div = divs[i];
+                div.style.height = '2px';
+                div.style.background = 'rgb(' + i + ',' + i + ',' + 255 + ')';
+                div.innerHTML='1';
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
