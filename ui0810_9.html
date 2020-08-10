@@ -3,17 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <title>Document</title>
-    <script>
+    <!-- <script>
        window.onload = function(){
            var hello = document.querySelector('h1');
+           var photo = document.querySelector('img');
            hello.onclick = function() {
-               alert("hello 출력")
-        };
+               alert('hello 출력')
+            };
+            photo.src = 'photo.jpg';
+            photo.width = 300;
+            photo.onclick = function(){
+                alert('computer');
+            };
        }; 
+    </script> -->
+    <script>
+        $(document).ready(function(){
+            $('h1').click(function() {
+                alert('hello 출력');
+            });
+            $('img').attr('src','photo.jpg');
+            $('img').attr('width', 300);
+            $('img').click(function(){
+            alert('notebook photo');
+            });
+        });
     </script>
+
 </head>
 <body>
     <h1>HELLO!!</h1>
+    <img>
 </body>
 </html>
