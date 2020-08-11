@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var count = 0;
+            var image = document.getElementById('image');
+            var frames = ['ryan0.png','ryan1.png','ryan2.png','ryan3.png','ryan4.png'];
+            setInterval(function(){
+                image.src = frames[count%frames.length]; // 지정된 시간마다 계속 반복
+                count++;
+            },1000/3);
+        };
+    </script>
+</head>
+<body>
+    <img id="image">
+</body>
+</html>

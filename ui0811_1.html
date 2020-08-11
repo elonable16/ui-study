@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height : 100px;
+            background-color: blue;
+        }
+        #box.er{
+            background-color: red;
+            border-radius : 50px;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $('#box').hover(function(){ // jquery의 hover 메소드
+                $('#box').addClass('er');// 마우스 커서가 올려졌을 때
+            }, function(){
+                $('#box').removeClass('er');// 마우스 커서가 나갔을 때
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+    
+</body>
+</html>

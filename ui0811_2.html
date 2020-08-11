@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <script>
+        $(document).ready(function(){
+            $('h1').click(function(){
+                alert('클릭 맨~!')
+            });
+            $('img').click(function(){
+                $('img').attr({src :'http://placehold.it/100x100', alt : '사진'});
+            });
+            $('#box1').click(function(){
+                $('#box1').text('BOX 1');
+            });
+            $('.box2').click(function(){
+                $('.box2').text('BOX 2');
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Click!!!</h1>
+    <img src = "#",width="100"><br>
+    <div id="box1">박스1</div>
+    <span class="box2">박스1</span><br>
+</body>
+</html>
