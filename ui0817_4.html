@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <!-- 초기화 -->
+    <style>
+        *{
+            margin : 0;
+            padding : 0;
+            font-family: 'Do Hyeon', sans-serif;
+        }
+        a{text-decoration: none;}
+        img{border:0; width:300px;}
+        li{list-style:none;}
+    </style>
+    <!-- 공통 구성 -->
+    <style>
+        .container{
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    </style>
+    <!-- 헤더 구성 -->
+    <style>
+        #main-header {
+            padding : 10px 5px;
+        }
+        #main-header h1{
+            font-size: 20px;
+            font-weight: normal;
+            line-height: 27px;
+            color:#222;
+        }
+        #main-header ul{
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        #main-header li{
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        #main-header label{
+            text-align: center;
+            float: right;
+            width: 40px;
+            height: 27px;
+            line-height: 27px;
+            color: #222;
+            border: 1px solid #222;
+            border-radius: 5px;
+        }
+        #checkbox{
+            display: none;
+        }
+        #checkbox + nav {
+            display: block;
+        }
+        #checkbox:checked + nav{
+            display: none;
+        }
+    </style>
+    <!-- 본문과 푸터 구성 -->
+    <style>
+        #main-content {
+            background: #bc0ae9;
+            padding: 40px 15px 30px;
+        }
+        #main-content h1{
+            text-align: center;
+            margin-bottom: 20px;
+            color : white;
+            font-weight: 500;
+        }
+        #main-content p {
+            color:#222;
+            text-align: center;
+            color: white;
+        }
+        #sub-content h1{
+            text-align: center;
+            color: #333;
+        }
+        #sub-content h2{
+            text-align: center;
+            color: #333;
+            font-size: 17px;
+        }
+        #sub-content p{
+            color: #555555;
+
+        }
+        #sub-content img{
+            width: 200px;
+            display:block;
+            margin:10px auto;
+        }
+        #main-footer{
+            padding-top:40px;
+        }
+        footer{
+            background: #323232;
+            color: white;
+            font-size: 12px;
+            text-align: center;
+            line-height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id = "main-header">
+        <header class ="container">
+            <div>
+                <label for="checkbox">▼</label> <!-- for를 통해서 id 값이 같으면 연결된 양식에 입력 또는 체크를 할수 있다. -->
+                <h1>elon</h1>
+            </div>
+            <input id="checkbox" checked="checked" type="checkbox">
+            <nav>
+                <ul>
+                    <li>Brand</li>
+                    <li>Store</li>
+                    <li>Notice</li>
+                    <li>QnA</li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+    <div id = "main-content">
+        <article class ="container">
+            <h1>인터넷 쇼핑몰</h1>
+            <p>10∼20대는 패션·뷰티 등에 특화한 전문쇼핑몰을 선호하고 30대 이상은 종합쇼핑몰을 선호하는 것으로 나타났습니다.
+               시장 조사업체 닐슨코리안클릭은 '2분기 전자상거래 보고서'에서 모든 연령대가 모바일 앱 기반 전자상거래 사이트로 쿠팡을 가장 선호하는 것으로 조사됐다고 오늘(17일) 밝혔습니다. 하지만 세부 순위는 차이를 보였습니다. </p>
+        </article>
+    </div>
+    <div id = "sub-content">
+        <article class ="container">
+            <h1>문화계 홈쇼핑</h1>
+            <p>베토벤의 음악이 웅장하게 울려퍼지는 사이, 화면 한쪽에선 가격과 무이자 혜택을 알리는 문구가 쉴 새 없이 등장합니다.</p>
+            <img src="image1.jpg">
+            <p>오케스트라의 라이브 연주는 물론 유명 지휘자도 출연해 쉬운 설명을 보탭니다.</p>
+            <br>
+            <h1>베토벤</h1>
+            <h2>운명 교향곡</h2>
+            <img src="image2.jpg">
+            <p>코로나로 비대면이 중요 방식이 된 가운데 관객 확보는 더 절실해지면서 순수예술 분야까지 진출한 문화계의 홈쇼핑 활용은 더 늘어날 것으로 보입니다.</p>
+        </article>
+    </div>
+    <div id = "main-footer">
+        <footer class ="container">
+            <div>ⓒ 1991-2017 example. all rights reserved.</div>
+        </footer>
+    </div>
+</body>
+</html>

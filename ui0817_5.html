@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="jquery.lightbox.js"></script>
+    <script src="jquery.imagesloaded.min.js"></script>
+    <script src="jquery.masonry.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Anton', sans-serif;
+        }
+        a{text-decoration: none;}
+        img {border :0;}
+        li {list-style:none;}
+        html{background: #f7f5f5;}
+    </style>
+    <!-- 헤더 -->
+    <style>
+        #main-header{
+            height: 40px;
+            background: #faf7f7;
+            position: relative;
+        }
+        .header-search-form{float: left;}
+        .header-menu{float: right;}
+        .header-title{
+            position :absolute;
+            width: 200px; height: 40px;
+            left: 50%;
+            margin-left: -100px;
+            background: url('logo.png');
+            background-repeat: no-repeat;
+            text-indent: -9999px; 
+        }
+    </style>
+    <!-- 풀다운 메뉴 -->
+    <style>
+        .outer-menu{
+            float: left;
+            width:100px; height: 20px;
+            line-height: 20px;
+            padding: 10px 0;
+            position : relative;
+            text-align:center;
+            font-size: 13px;
+            font-weight: bold;
+            z-index: 9999;
+        }
+    .outer-menu:hover {background : #e1dfdf;}
+    .inner-menu {
+        display: none;
+        background: #ffffff;
+        margin-top: 10px;
+        width:100%;
+        border-top: 1px solid #cccaca;
+        box-shadow: 0 2px 4px rgba(34,25,25,0.5);
+    }
+    .inner-menu a {
+        display:block;
+        padding: 5px 10px;
+        z-index: 5000; /* 화면의 레이아웃 우선순위를 결정한다. */
+    }
+    .inner-menu a:hover {background : #e1dfdf;}
+    </style>
+    <!-- 네비게이션 구성 -->
+    <style>
+        #main-navigation{
+            height : 30px;
+            background: #faf7f7;
+            border-top: 1px solid #cfcaca;
+            box-shadow: 1px 3px 3px rgba(34,25,25,0.4);
+        }
+        #main-navigation > ul{
+            overflow: hidden;
+            text-align: center;
+        }
+        #main-navigation > ul > li{
+            display: inline;
+            padding: 0 5px;
+            line-height:30px;
+            font-size: 13px;
+            color:#524d4d;
+            text-shadow : 0 1px 1px white;
+        }
+        #main-navigation > ul> li:hover{
+            background : #e1dfdf;
+            border-radius:2px;
+        }
+    </style>
+    <!-- 검색양식 -->
+    <style>
+        .header-search-form{
+            height: 26px;
+            padding:7px;
+        }
+        .input-search{
+            display: block;
+            float: left;
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            border-radius: 15px 0 0 15px;
+            box-shadow: inset 0 ipz 1pz rgba(0,0,0,0.05);
+            width:120px; height: 24px;
+            padding: 0 0 0 10px;
+            font-size: 12px;
+            color: #555555;
+        }
+        .input-search:focus{
+            border-color: rgba(82,168,236,0.8);
+            outline: 0;
+            box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+        }
+        .input-search-submit{
+            display : block;
+            float: left;
+            width: 50px;
+            height: 26px;
+            border-radius: 0 15px 15px 0;
+            border:1px solid #cccccc;
+            margin-left: -1px;
+            vertical-align: top;
+            display:inline-block;
+        }
+    </style>
+    <!-- 종이 -->
+    <style>
+        .paper{
+            width:190px;
+            margin-top: 10px;
+            padding:15px 15px 0;
+            font-size :11px;
+            background: #ffffff;
+            box-shadow:0 1px 3px rgba(34,25,25,0.4);
+        }
+        .paper-content{
+            margin: 0 -15px;
+            margin-top:10px;
+            padding:10px 15px;
+            background: #f2f0f0;
+            overflow:hidden;
+        }
+        .paper-description{
+            margin: 10px 0;
+        }
+        .paper-link{
+            display: block;
+            float: left;
+        }
+        .paper-text{
+            float: left;
+            width: 150px;
+            margin-left:10px;
+        }
+    </style>
+    <!-- 섹션 -->
+    <style>
+        #main-section{
+            width:920px;
+            margin:0 auto;
+        }
+        @medi (max-width: 919px) {
+            #main-section{width: 690px;}
+        }
+        @medi (min-width: 930px) and (max-width: 1140px) {
+            #main-section{width: 920px;}
+        }
+        @medi (min-width: 1150px) and (max-width: 1140px) {
+            #main-section{width: 1150px;}
+        }
+        @medi (min-width: 1380px) and (max-width: 1140px) {
+            #main-section{width: 1380px;}
+        }
+
+    </style>
+    <style>
+        #darken-background{
+            position: absolute;
+            top:0;
+            left:0;
+            right: 0;
+            height:100%;
+            display: none;
+            background:rgba(0,0,0,0.9);
+            z-index: 10000;
+            overflow-y:scroll;
+        }
+        #lightbox{
+            width: 700px;
+            margin:20px auto;
+            padding: 15px;
+            border:1px solid #333333;
+            border-radius: 5px;
+            background:white;
+            box-shadow: 0 5px 5px rgba(34,25,25,0.4);
+            text-align:center;
+        }
+    </style>
+    <script>
+        // 풀다운 메뉴
+        $(document).ready(function(){
+            $('.outer-menu').hover(function(){
+                $(this).find('.inner-menu').css('display','block');
+            },function(){
+                $(this).find('.inner-menu').css('display','none');
+            });
+        });
+        //페이지
+        $(document).ready(function(){
+            $('#main-section').imagesLoaded(function(){
+                $('#main-section').masonry({
+                   itemSelector: '.paper',
+                    columnWidth : 230,
+                    isAnimated : true
+                });
+            });
+        });
+        //라이트 박스
+        $(document).ready(function(){
+
+        });
+        
+    </script>
+</head>
+<body>
+    <header id = main-header>
+        <div class="header-search-form">
+            <form>
+                <input type="search" class="input-search">
+                <input type="submit" class="input-search-submit" value="검색">
+            </form>
+        </div>
+        <h1 class="header-title">Image Webpage Master</h1>
+        <div class ="header-menu">
+            <ul class="outer-menu">
+                <li>
+                    <a href="#">Information</a>
+                    <ul class="inner-menu">
+                        <li><a href="#">data</a></li>
+                        <li><a href="#">data</a></li>
+                        <li><a href="#">data</a></li>
+                        <li><a href="#">data</a></li>
+                        <li><a href="#">data</a></li>
+                        <li><a href="#">data</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="outer-menu">
+                <li>
+                    <a href="#">User</a>
+                    <ul class = "inner-menu">
+                        <li><a href="#">data</a></li>
+                        <li><a href="#">data</a></li>
+                        <li><a href="#">data</a></li>
+                        <li><a href="#">data</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <nav id ="main-navigation">
+        <ul>
+            <li><a href="#">Following</a></li>
+            <li><a href="#">Categorise</a></li>
+            <li><a href="#">Everything</a></li>
+            <li><a href="#">Popular</a></li>
+            <li><a href="#">Gift</a></li>
+        </ul>
+    </nav>
+    <!-- 본문 영역 -->
+    <section id = "main-section">
+        <div class = "paper">
+            <div class = "paper-holder">
+                <a><img src="http://placeimg.com/190/200" width="190"></a>
+            </div>
+            <p class="paper-discription">Random Image</p>
+            <div class = "paper-content">
+                <a class = "paper-link" href="#">
+                    <img src="http://placeimg.com/190/130" alt="">
+                </a>
+                <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
+
+            </div>
+        </div>
+        <div class = "paper">
+            <div class = "paper-holder">
+                <a><img src="http://placeimg.com/180/200" width="180"></a>
+            </div>
+            <p class="paper-discription">Random Image</p>
+            <div class = "paper-content">
+                <a class = "paper-link" href="#">
+                    <img src="http://placeimg.com/200/130" alt="">
+                </a>
+                <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
+
+            </div>
+        </div>
+        <div class = "paper">
+            <div class = "paper-holder">
+                <a><img src="http://placeimg.com/160/200" width="160"></a>
+            </div>
+            <p class="paper-discription">Random Image</p>
+            <div class = "paper-content">
+                <a class = "paper-link" href="#">
+                    <img src="http://placeimg.com/200/210" alt="">
+                </a>
+                <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
+
+            </div>
+        </div>
+        <div class = "paper">
+            <div class = "paper-holder">
+                <a><img src="http://placeimg.com/180/200" width="180"></a>
+            </div>
+            <p class="paper-discription">Random Image</p>
+            <div class = "paper-content">
+                <a class = "paper-link" href="#">
+                    <img src="http://placeimg.com/200/190" alt="">
+                </a>
+                <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
+
+            </div>
+        </div>
+        <div class = "paper">
+            <div class = "paper-holder">
+                <a><img src="http://placeimg.com/120/200" width="120"></a>
+            </div>
+            <p class="paper-discription">Random Image</p>
+            <div class = "paper-content">
+                <a class = "paper-link" href="#">
+                    <img src="http://placeimg.com/200/150" alt="">
+                </a>
+                <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
+
+            </div>
+        </div>
+        <div class = "paper">
+            <div class = "paper-holder">
+                <a><img src="http://placeimg.com/300/200" width="300"></a>
+            </div>
+            <p class="paper-discription">Random Image</p>
+            <div class = "paper-content">
+                <a class = "paper-link" href="#">
+                    <img src="http://placeimg.com/270/130" alt="">
+                </a>
+                <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
+
+            </div>
+        </div>
+        <div class = "paper">
+            <div class = "paper-holder">
+                <a><img src="http://placeimg.com/200/200" width="200"></a>
+            </div>
+            <p class="paper-discription">Random Image</p>
+            <div class = "paper-content">
+                <a class = "paper-link" href="#">
+                    <img src="http://placeimg.com/200/110" alt="">
+                </a>
+                <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
+
+            </div>
+        </div>
+        <div class = "paper">
+            <div class = "paper-holder">
+                <a><img src="http://placeimg.com/190/200" width="190"></a>
+            </div>
+            <p class="paper-discription">Random Image</p>
+            <div class = "paper-content">
+                <a class = "paper-link" href="#">
+                    <img src="http://placeimg.com/200/130" alt="">
+                </a>
+                <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
+
+            </div>
+        </div>
+        <div class = "paper">
+            <div class = "paper-holder">
+                <a><img src="http://placeimg.com/190/210" width="190"></a>
+            </div>
+            <p class="paper-discription">Random Image</p>
+            <div class = "paper-content">
+                <a class = "paper-link" href="#">
+                    <img src="http://placeimg.com/200/250" alt="">
+                </a>
+                <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
+
+            </div>
+        </div>
+        <div class = "paper">
+            <div class = "paper-holder">
+                <a><img src="http://placeimg.com/190/200" width="190"></a>
+            </div>
+            <p class="paper-discription">Random Image</p>
+            <div class = "paper-content">
+                <a class = "paper-link" href="#">
+                    <img src="http://placeimg.com/200/300" alt="">
+                </a>
+                <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
+
+            </div>
+        </div>
+
+    </section>
+    <!-- 라이트 박스 -->
+    <div id = "darken-background">
+        <div id="lightbox">
+            <div class="user-information">
+                <a class ="user-information-image" href="#">
+                    <img src="http://placeimg.com/70/70">
+                </a>
+                <div class="user-information-text">
+                    <h3>User</h3>
+                    <p>image title</p>
+                </div>
+            </div>
+                <hr class ="lightbox-splitter">
+                <img src="http://placeimg.com/600/750">
+        </div>
+    </div>
+</body>
+</html>
