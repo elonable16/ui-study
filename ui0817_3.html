@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    h2 ~ *{
+        color : red;
+    }
+    input:checked + div{ /*input:checked를 붙여서 써야 한다.*/
+        display: none;
+    }
+</style>
+<body>
+    <input type="checkbox">
+    <div class = "section-a">
+        <h1>동위 선택자 예제</h1>
+        <h2>동위 선택자 예제</h2>
+        <h3>동위 선택자 예제</h3>
+        <h4>동위 선택자 예제</h4>
+    </div>
+    <h1>동위 선택자 2</h1>
+</body>
+</html>
