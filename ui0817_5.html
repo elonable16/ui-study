@@ -41,17 +41,17 @@
     </style>
     <!-- 풀다운 메뉴 -->
     <style>
-        .outer-menu{
-            float: left;
-            width:100px; height: 20px;
-            line-height: 20px;
-            padding: 10px 0;
-            position : relative;
-            text-align:center;
-            font-size: 13px;
-            font-weight: bold;
-            z-index: 9999;
-        }
+    .outer-menu{
+        float: left;
+        width:100px; height: 20px;
+        line-height: 20px;
+        padding: 10px 0;
+        position : relative;
+        text-align:center;
+        font-size: 13px;
+        font-weight: bold;
+        z-index: 9999;
+    }
     .outer-menu:hover {background : #e1dfdf;}
     .inner-menu {
         display: none;
@@ -105,7 +105,7 @@
             background-color: #ffffff;
             border: 1px solid #cccccc;
             border-radius: 15px 0 0 15px;
-            box-shadow: inset 0 ipz 1pz rgba(0,0,0,0.05);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
             width:120px; height: 24px;
             padding: 0 0 0 10px;
             font-size: 12px;
@@ -130,7 +130,7 @@
     </style>
     <!-- 종이 -->
     <style>
-        .paper{
+        .paper {
             width:190px;
             margin-top: 10px;
             padding:15px 15px 0;
@@ -138,12 +138,12 @@
             background: #ffffff;
             box-shadow:0 1px 3px rgba(34,25,25,0.4);
         }
-        .paper-content{
+        .paper-content {
             margin: 0 -15px;
             margin-top:10px;
             padding:10px 15px;
             background: #f2f0f0;
-            overflow:hidden;
+            overflow : hidden;
         }
         .paper-description{
             margin: 10px 0;
@@ -164,16 +164,16 @@
             width:920px;
             margin:0 auto;
         }
-        @medi (max-width: 919px) {
+        @media (max-width: 919px) {
             #main-section{width: 690px;}
         }
-        @medi (min-width: 930px) and (max-width: 1140px) {
+        @media (min-width: 930px) and (max-width: 1140px) {
             #main-section{width: 920px;}
         }
-        @medi (min-width: 1150px) and (max-width: 1140px) {
+        @media (min-width: 1150px) and (max-width: 1379px) {
             #main-section{width: 1150px;}
         }
-        @medi (min-width: 1380px) and (max-width: 1140px) {
+        @media (min-width: 1380px) {
             #main-section{width: 1380px;}
         }
 
@@ -200,6 +200,10 @@
             box-shadow: 0 5px 5px rgba(34,25,25,0.4);
             text-align:center;
         }
+        .user-information{overflow: hidden; text-align:left;}
+        .user-information-image{float: left; width: 70px;}
+        .user-information-text{float: right; width: 620px;}
+        .lightbox-splitter{margin:10px 0;}
     </style>
     <script>
         // 풀다운 메뉴
@@ -214,7 +218,7 @@
         $(document).ready(function(){
             $('#main-section').imagesLoaded(function(){
                 $('#main-section').masonry({
-                   itemSelector: '.paper',
+                    itemSelector: '.paper',
                     columnWidth : 230,
                     isAnimated : true
                 });
@@ -222,7 +226,24 @@
         });
         //라이트 박스
         $(document).ready(function(){
-
+            function showLightBox(){
+                $('#darken-background').show();
+                $('#darken-background').css('top', $(window).scrollTop()); //스크롤을 못하게 함
+                $('body').css('overflow', 'hidden');
+            }
+            function hideLightBox(){
+                $('#darken-background').hide();
+                $('body').css('overflow','');
+            }
+            $('.paper').click(function(){
+                showLightBox();
+            })
+            $('#darken-background').click(function(){
+                hideLightBox();
+            })
+            $('#lightbox').click(function (event){
+                event.stopPropagation(); // 다른곳을 클릭하지 못하도록 설정
+            });
         });
         
     </script>
@@ -278,114 +299,22 @@
             <div class = "paper-holder">
                 <a><img src="http://placeimg.com/190/200" width="190"></a>
             </div>
-            <p class="paper-discription">Random Image</p>
+            <p class="paper-description">Random Image</p>
             <div class = "paper-content">
                 <a class = "paper-link" href="#">
-                    <img src="http://placeimg.com/190/130" alt="">
+                    <img src="http://placeimg.com/30/30">
                 </a>
                 <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
-
-            </div>
-        </div>
-        <div class = "paper">
-            <div class = "paper-holder">
-                <a><img src="http://placeimg.com/180/200" width="180"></a>
-            </div>
-            <p class="paper-discription">Random Image</p>
-            <div class = "paper-content">
-                <a class = "paper-link" href="#">
-                    <img src="http://placeimg.com/200/130" alt="">
-                </a>
-                <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
-
-            </div>
-        </div>
-        <div class = "paper">
-            <div class = "paper-holder">
-                <a><img src="http://placeimg.com/160/200" width="160"></a>
-            </div>
-            <p class="paper-discription">Random Image</p>
-            <div class = "paper-content">
-                <a class = "paper-link" href="#">
-                    <img src="http://placeimg.com/200/210" alt="">
-                </a>
-                <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
-
-            </div>
-        </div>
-        <div class = "paper">
-            <div class = "paper-holder">
-                <a><img src="http://placeimg.com/180/200" width="180"></a>
-            </div>
-            <p class="paper-discription">Random Image</p>
-            <div class = "paper-content">
-                <a class = "paper-link" href="#">
-                    <img src="http://placeimg.com/200/190" alt="">
-                </a>
-                <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
-
-            </div>
-        </div>
-        <div class = "paper">
-            <div class = "paper-holder">
-                <a><img src="http://placeimg.com/120/200" width="120"></a>
-            </div>
-            <p class="paper-discription">Random Image</p>
-            <div class = "paper-content">
-                <a class = "paper-link" href="#">
-                    <img src="http://placeimg.com/200/150" alt="">
-                </a>
-                <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
-
-            </div>
-        </div>
-        <div class = "paper">
-            <div class = "paper-holder">
-                <a><img src="http://placeimg.com/300/200" width="300"></a>
-            </div>
-            <p class="paper-discription">Random Image</p>
-            <div class = "paper-content">
-                <a class = "paper-link" href="#">
-                    <img src="http://placeimg.com/270/130" alt="">
-                </a>
-                <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
-
-            </div>
-        </div>
-        <div class = "paper">
-            <div class = "paper-holder">
-                <a><img src="http://placeimg.com/200/200" width="200"></a>
-            </div>
-            <p class="paper-discription">Random Image</p>
-            <div class = "paper-content">
-                <a class = "paper-link" href="#">
-                    <img src="http://placeimg.com/200/110" alt="">
-                </a>
-                <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
-
-            </div>
-        </div>
-        <div class = "paper">
-            <div class = "paper-holder">
-                <a><img src="http://placeimg.com/190/200" width="190"></a>
-            </div>
-            <p class="paper-discription">Random Image</p>
-            <div class = "paper-content">
-                <a class = "paper-link" href="#">
-                    <img src="http://placeimg.com/200/130" alt="">
-                </a>
-                <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
-
             </div>
         </div>
         <div class = "paper">
             <div class = "paper-holder">
                 <a><img src="http://placeimg.com/190/210" width="190"></a>
             </div>
-            <p class="paper-discription">Random Image</p>
+            <p class="paper-description">Random Image</p>
             <div class = "paper-content">
                 <a class = "paper-link" href="#">
-                    <img src="http://placeimg.com/200/250" alt="">
+                    <img src="http://placeimg.com/30/30" alt="">
                 </a>
                 <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
 
@@ -393,16 +322,106 @@
         </div>
         <div class = "paper">
             <div class = "paper-holder">
-                <a><img src="http://placeimg.com/190/200" width="190"></a>
+                <a><img src="http://placeimg.com/190/220" width="190"></a>
             </div>
-            <p class="paper-discription">Random Image</p>
+            <p class="paper-description">Random Image</p>
             <div class = "paper-content">
                 <a class = "paper-link" href="#">
-                    <img src="http://placeimg.com/200/300" alt="">
+                    <img src="http://placeimg.com/30/30" alt="">
                 </a>
                 <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
 
             </div>
+        </div>
+        <div class = "paper">
+            <div class = "paper-holder">
+                <a><img src="http://placeimg.com/190/230" width="190"></a>
+            </div>
+            <p class="paper-description">Random Image</p>
+            <div class = "paper-content">
+                <a class = "paper-link" href="#">
+                    <img src="http://placeimg.com/30/30" alt="">
+                </a>
+                <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
+
+            </div>
+        </div>
+        <div class = "paper">
+            <div class = "paper-holder">
+                <a><img src="http://placeimg.com/190/240" width="190"></a>
+            </div>
+            <p class="paper-description">Random Image</p>
+            <div class = "paper-content">
+                <a class = "paper-link" href="#">
+                    <img src="http://placeimg.com/30/30" alt="">
+                </a>
+                <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
+
+            </div>
+        </div>
+        <div class = "paper">
+            <div class = "paper-holder">
+                <a><img src="http://placeimg.com/190/250" width="190"></a>
+            </div>
+            <p class="paper-description">Random Image</p>
+            <div class = "paper-content">
+                <a class = "paper-link" href="#">
+                    <img src="http://placeimg.com/30/30" alt="">
+                </a>
+                <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
+
+            </div>
+        </div>
+        <div class = "paper">
+            <div class = "paper-holder">
+                <a><img src="http://placeimg.com/190/260" width="190"></a>
+            </div>
+            <p class="paper-description">Random Image</p>
+            <div class = "paper-content">
+                <a class = "paper-link" href="#">
+                    <img src="http://placeimg.com/30/30" alt="">
+                </a>
+                <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
+
+            </div>
+        </div>
+        <div class = "paper">
+            <div class = "paper-holder">
+                <a><img src="http://placeimg.com/190/270" width="190"></a>
+            </div>
+            <p class="paper-description">Random Image</p>
+            <div class = "paper-content">
+                <a class = "paper-link" href="#">
+                    <img src="http://placeimg.com/30/30" alt="">
+                </a>
+                <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
+
+            </div>
+        </div>
+        <div class = "paper">
+            <div class = "paper-holder">
+                <a><img src="http://placeimg.com/190/280" width="190"></a>
+            </div>
+                <p class="paper-description">Random Image</p>
+                <div class = "paper-content">
+                    <a class = "paper-link" href="#">
+                        <img src="http://placeimg.com/30/30" alt="">
+                    </a>
+                    <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
+
+                </div>
+        </div>
+        <div class = "paper">
+            <div class = "paper-holder">
+                <a><img src="http://placeimg.com/190/280" width="190"></a>
+            </div>
+                <p class="paper-description">Random Image</p>
+                <div class = "paper-content">
+                    <a class = "paper-link" href="#">
+                        <img src="http://placeimg.com/30/30">
+                    </a>
+                    <p class="paper-text">n image (from Latin: imago) is an artifact that depicts visual perception, such as a photograph or other two-dimensional picture, that resembles a subject—usually a physical object—and thus provides a depiction of it. In the context of signal processing, an image is a distributed amplitude of color(s).</p>
+                </div>
         </div>
 
     </section>
